@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#5b5cf0" />
+    <title>Clear — TODOリスト</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="todo-card" aria-labelledby="app-title">
+        <header class="app-header">
+          <div>
+            <p class="eyebrow">MY DAY</p>
+            <h1 id="app-title">やることリスト</h1>
+            <p class="today" id="today"></p>
+          </div>
+          <div class="header-mark" aria-hidden="true">✓</div>
+        </header>
+
+        <form class="task-form" id="task-form">
+          <label class="sr-only" for="task-input">新しいタスク</label>
+          <input id="task-input" name="task" type="text" maxlength="120" placeholder="新しいタスクを入力..." autocomplete="off" required />
+          <button type="submit">追加</button>
+        </form>
+
+        <div class="toolbar" aria-label="タスクの表示切り替え">
+          <div class="filters" role="group">
+            <button class="filter is-active" type="button" data-filter="all">すべて</button>
+            <button class="filter" type="button" data-filter="active">未完了</button>
+            <button class="filter" type="button" data-filter="completed">完了</button>
+          </div>
+          <button class="clear-completed" id="clear-completed" type="button">完了を削除</button>
+        </div>
+
+        <p class="task-count" id="task-count" aria-live="polite"></p>
+        <ul class="task-list" id="task-list" aria-label="タスク一覧"></ul>
+        <div class="empty-state" id="empty-state" hidden>
+          <span aria-hidden="true">✦</span>
+          <p>タスクはまだありません</p>
+          <small>小さな一歩から始めましょう。</small>
+        </div>
+      </section>
+    </main>
+    <template id="task-template">
+      <li class="task-item">
+        <label class="task-label">
+          <input class="task-toggle" type="checkbox" />
+          <span class="custom-checkbox" aria-hidden="true"></span>
+          <span class="task-text"></span>
+        </label>
+        <button class="delete-task" type="button" aria-label="タスクを削除">×</button>
+      </li>
+    </template>
+    <script src="app.js"></script>
+  </body>
+</html>
